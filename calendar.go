@@ -34,12 +34,13 @@ func (c *Calendar) Add(e Event) {
 
 // Event struct for icalendar data
 type Event struct {
-	Name     string
-	Created  time.Time
-	UID      string
-	Start    time.Time
-	End      time.Time
-	Location string
+	Name        string
+	Created     time.Time
+	UID         string
+	Start       time.Time
+	End         time.Time
+	Location    string
+	Description string
 }
 
 func (e Event) String() string {
@@ -51,8 +52,9 @@ DTSTART;TZID=Europe/London:%v
 DTEND;TZID=Europe/London:%v
 SUMMARY:%v
 LOCATION:%v
+DESCRIPTION:%v
 END:VEVENT
 `
 
-	return fmt.Sprintf(text, e.UID, e.Created.Format(layout), e.Start.Format(layout), e.End.Format(layout), e.Name, e.Location)
+	return fmt.Sprintf(text, e.UID, e.Created.Format(layout), e.Start.Format(layout), e.End.Format(layout), e.Name, e.Location, e.Description)
 }
