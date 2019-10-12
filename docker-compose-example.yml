@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  mrhacalendar:
+    image: jccroft1/mrhacalendar:latest
+    image: mrhacalendar
+    ports:
+      - "59463:59463/tcp"
+    restart: unless-stopped
+
