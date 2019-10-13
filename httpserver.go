@@ -19,16 +19,16 @@ func handleMrhaCalendar(w http.ResponseWriter, r *http.Request) {
 
 	var err error
 	if c == nil {
-		fmt.Println("extracting", teamID)
 		c, err = extract(teamID)
 
 		if err != nil {
+			log.Printf("failed to extract: %v\n", err)
 			return
 		}
 		// no need to let storing in cache block current request
 		go set(teamID, c)
 	} else {
-		fmt.Println("Using cache")
+		log.Println("using cache")
 	}
 
 	fmt.Fprint(w, c)

@@ -1,6 +1,9 @@
 package main
 
-import "sync"
+import (
+	"sync"
+	"time"
+)
 
 var cache = struct {
 	sync.RWMutex
@@ -19,4 +22,16 @@ func set(team string, c *Calendar) {
 	cache.Lock()
 	defer cache.Unlock()
 	cache.data[team] = c
+	// expire cache after 12 hours
+	// setting again will reset cache
+	go func() {
+		time.Sleep(12 * time.Hour)
+		remove(team)
+	}()
+}
+
+func remove(team string) {
+	cache.Lock()
+	defer cache.Unlock()
+	delete(cache.data, team)
 }

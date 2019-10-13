@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -134,19 +133,16 @@ func extract(teamID string) (*Calendar, error) {
 	if err != nil {
 		return nil, err
 	}
-	log.Println("fetched content")
 
 	table, err := findFixturesTable(doc)
 	if err != nil {
 		return nil, err
 	}
-	log.Println("found fixtures table")
 
 	tableData, err := parseTable(table)
 	if err != nil {
 		return nil, err
 	}
-	log.Println("parsed fixtures table")
 
 	fixtures := make([]FixtureData, 0, len(tableData))
 	for _, f := range tableData {
@@ -161,7 +157,6 @@ func extract(teamID string) (*Calendar, error) {
 			})
 		}
 	}
-	log.Println("parsed to fixture object")
 
 	return createCalendar(teamID, fixtures)
 }
