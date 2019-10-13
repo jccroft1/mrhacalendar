@@ -108,10 +108,12 @@ func createCalendar(teamID string, fixtures []FixtureData) (*Calendar, error) {
 				break
 			}
 		}
+		end := start.Add(time.Hour * 2)
 		if err != nil {
 			start, err = time.ParseInLocation("2 Jan 2006", f.Date, loc)
+			end = start.Add(time.Hour * 24)
 		}
-		end := start.Add(time.Hour * 2)
+
 		ical.Add(Event{
 			Name:        f.Home + " vs " + f.Away,
 			Created:     time.Now(),
