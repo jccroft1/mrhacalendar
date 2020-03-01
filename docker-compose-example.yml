@@ -4,6 +4,5 @@ services:
   mrhacalendar:
     image: jccroft1/mrhacalendar:latest
     ports:
-      - "59463:59463/tcp"
+      - "443:443/tcp"
     restart: unless-stopped
-
