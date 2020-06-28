@@ -98,7 +98,7 @@ func createCalendar(teamID string, fixtures []FixtureData) (*Calendar, error) {
 		Name: "MRHA Fixtures " + teamID,
 	}
 	loc, _ := time.LoadLocation("Europe/London")
-	layouts := []string{"2 Jan 2006 15:04pm", "2 Jan 2006 15.04pm", "2 Jan 2006 15.04", "2 Jan 2006 15:04"}
+	layouts := []string{"2 Jan 2006 15:04pm", "2 Jan 2006 15.04pm", "2 Jan 2006 15.04", "2 Jan 2006 15:04", "2 Jan 2006 15:04 pm"}
 	for i, f := range fixtures {
 		var start time.Time
 		var err error

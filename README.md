@@ -8,3 +8,4 @@ HTTP server to serve calendar feed of a single MRHA.co.uk team.
 
 * Rate-limit access to mrha.co.uk 
 * Create page to search for teams and easily copy icalendar link
+* Update README for HTTPS
